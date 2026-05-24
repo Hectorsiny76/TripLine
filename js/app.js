@@ -16,23 +16,24 @@ document.querySelectorAll('a,button,.btn-primary,.btn-ghost,.destino-card,.strea
 });
 
 // ══════════════════════════════════════════════
-// 🎥 CONFIGURACIÓN DE STREAMS — EDITA AQUÍ
+// STREAMS: configuration is loaded from stream-config.js / stream-config.local.js.
 // ══════════════════════════════════════════════
-const MEDIA_SERVER_HOST =
-  window.location.protocol === 'file:' || !window.location.hostname
-    ? '192.168.100.14'
-    : window.location.hostname;
-const HLS_BASE_URL = `http://${MEDIA_SERVER_HOST}:8888`;
+const streamConfig = window.TRIPLINE_STREAM_CONFIG || {};
+const HLS_BASE_URL = (streamConfig.hlsBaseUrl || '').replace(/\/$/, '');
 
-const STREAM_1_URL = `${HLS_BASE_URL}/live/aventura1/index.m3u8`;
-const STREAM_2_URL = `${HLS_BASE_URL}/live/selva/index.m3u8`;
+function streamUrlFor(path) {
+  return HLS_BASE_URL && path ? `${HLS_BASE_URL}/${path}/index.m3u8` : '';
+}
 
-const STREAM_3_URL =
-'';
+const STREAM_1_URL = streamUrlFor(streamConfig.mainPath);
+const STREAM_2_URL = streamUrlFor(streamConfig.sidePaths?.[0]);
+const STREAM_3_URL = streamUrlFor(streamConfig.sidePaths?.[1]);
 
 const endpointEl = document.getElementById('stream-endpoint');
 if (endpointEl) {
-  endpointEl.textContent = `${MEDIA_SERVER_HOST}:8888 — aventura1`;
+  endpointEl.textContent = STREAM_1_URL
+    ? 'CANAL CONFIGURADO — ESPERANDO SEÑAL'
+    : 'MODO PREVIEW — SIN CANAL CONFIGURADO';
 }
 
 // ── VOD STORAGE ────────────────────────────────
@@ -155,6 +156,11 @@ function scheduleRetry() {
 }
 
 function initHLS() {
+  if (!streamUrl) {
+    elStatus && (elStatus.textContent = 'MODO PREVIEW — SIN CANAL CONFIGURADO');
+    renderVODs();
+    return;
+  }
   if (!HLS_AVAILABLE) {
     elStatus && (elStatus.textContent = 'MODO PREVIEW — PLAYER HLS NO DISPONIBLE');
     renderVODs();

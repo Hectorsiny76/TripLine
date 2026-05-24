@@ -669,10 +669,10 @@ section { position: relative; }
   text-shadow: 0 0 16px rgba(0,0,0,.9);
 }
 .stream-offline-bg--lacandona {
-  background-image: linear-gradient(135deg, rgba(4,26,6,.25), rgba(0,0,0,.48)), url('../assets/stream-lacandona.svg');
+  background-image: linear-gradient(135deg, rgba(4,26,6,.14), rgba(0,0,0,.34)), url('../assets/lacandon-wingsuit.png');
 }
 .stream-offline-bg--silencio {
-  background-image: linear-gradient(135deg, rgba(26,5,0,.2), rgba(0,0,0,.5)), url('../assets/stream-silencio.svg');
+  background-image: linear-gradient(135deg, rgba(26,5,0,.12), rgba(0,0,0,.32)), url('../assets/ZONA-DEL-SILENCIO.jpg');
 }
 
 /* ── HUD PANEL ─────────────────────────────── */

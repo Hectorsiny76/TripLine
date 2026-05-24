@@ -97,7 +97,7 @@
         <div id="stream-connecting" style="position:absolute;inset:0;background:linear-gradient(135deg,#020a01,#010501);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:2;">
           <div style="font-family:var(--font-hud);font-size:.7rem;letter-spacing:3px;color:var(--neon);text-align:center;margin-top:.5rem;">
             <span id="connect-status">CONECTANDO SEÑAL...</span><br>
-            <span id="stream-endpoint" style="color:var(--text-dim);font-size:.55rem;display:block;margin-top:.4rem;">CARGANDO ENDPOINT — aventura1</span>
+            <span id="stream-endpoint" style="color:var(--text-dim);font-size:.55rem;display:block;margin-top:.4rem;">CANAL PRIVADO — ESPERANDO SEÑAL</span>
           </div>
           <div id="connect-dots" style="display:flex;gap:6px;margin-top:.3rem;">
             <span style="width:6px;height:6px;background:var(--neon);border-radius:50%;animation:dot-blink 1.2s .0s ease-in-out infinite;box-shadow:0 0 6px var(--neon-glow);"></span>
@@ -484,6 +484,12 @@
   </div>
 </footer>
 
+<script src="js/stream-config.js"></script>
+<script>
+  if (location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    document.write('<script src="js/stream-config.local.js"><\/script>');
+  }
+</script>
 <script src="js/demo-auth.js" defer></script>
 <script src="js/app.js" defer></script>
 </body>

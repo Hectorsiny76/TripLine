@@ -15,16 +15,13 @@ La capa `.hero-media__overlay` en `css/styles.css` mantiene el título y los bot
 
 ## Transmisión en vivo con MediaMTX
 
-La página toma automáticamente el host desde el que se abre y reproduce HLS en el puerto `8888`. Si se abre directamente como archivo, usa como respaldo `192.168.100.14`.
+Las direcciones y rutas de streaming locales no se incluyen en Git. Para probar en tu equipo:
 
-Publica desde PRISM con:
+1. Copia `js/stream-config.example.js` como `js/stream-config.local.js`.
+2. Edita `js/stream-config.local.js` con tu URL HLS y rutas de MediaMTX.
+3. Mantén MediaMTX abierto y PRISM transmitiendo para que el canal exista.
 
-```text
-Server: rtmp://192.168.100.14/live
-Stream Key: aventura1
-```
-
-MediaMTX debe permanecer abierto y PRISM transmitiendo para que la ruta `live/aventura1` esté disponible.
+`js/stream-config.local.js` está ignorado por Git. En un despliegue público, una URL de reproducción utilizada por el navegador siempre puede inspeccionarse; no coloques contraseñas ni claves de publicación RTMP en archivos del frontend.
 
 ## Cuenta, comunidad y pagos de demostración
 

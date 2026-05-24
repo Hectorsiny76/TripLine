@@ -24,7 +24,7 @@ const destinations = {
     difficulty: 'EXTREMA',
     duration: '4 DÍAS',
     region: 'DURANGO',
-    image: "url('../assets/Zona-del-silencio.jpg')"
+    image: "url('../assets/ZONA-DEL-SILENCIO.jpg')"
   },
   'huasteca-potosina': {
     name: 'HUASTECA POTOSINA',
@@ -42,7 +42,7 @@ const destinations = {
     difficulty: 'EXTREMA',
     duration: '10 DÍAS',
     region: 'VERACRUZ',
-    image: "url('../assets/montaña.jpg')"
+    image: "url('../assets/Montaña.jpg')"
   }
 };
 
