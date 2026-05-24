@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout Demo | TRIP LINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="checkout-page">
+<nav>
+  <a href="index.html" class="nav-logo glitch">TRIP<span>LINE</span></a>
+  <a class="account-return" href="index.html#paquetes">VOLVER A PAQUETES</a>
+</nav>
+<main class="checkout-shell">
+  <section class="checkout-summary">
+    <div class="section-label">CHECKOUT SIMULADO</div>
+    <h1 id="checkoutPackageName">EXTREME</h1>
+    <p id="checkoutPackageDuration"></p>
+    <div class="checkout-price" id="checkoutPrice"></div>
+    <ul class="checkout-benefits" id="checkoutBenefits"></ul>
+  </section>
+  <section class="payment-panel">
+    <div class="demo-notice">MODO DEMOSTRACIÓN — NO INGRESES DATOS REALES. NINGÚN COBRO SERÁ PROCESADO.</div>
+    <h2>PAGO DE MISIÓN</h2>
+    <div class="payment-account">RESERVANDO COMO <strong data-session-name></strong></div>
+    <form id="paymentForm" class="payment-form">
+      <label>NOMBRE EN TARJETA
+        <input required value="Explorador Demo" autocomplete="off">
+      </label>
+      <label>NÚMERO DE TARJETA DE PRUEBA
+        <input required value="4242 4242 4242 4242" autocomplete="off">
+      </label>
+      <div class="payment-row">
+        <label>EXPIRACIÓN
+          <input required value="12/30" autocomplete="off">
+        </label>
+        <label>CVV
+          <input required value="123" autocomplete="off">
+        </label>
+      </div>
+      <button class="btn-primary payment-submit" type="submit">SIMULAR PAGO</button>
+    </form>
+    <div class="payment-success" id="paymentSuccess" hidden>
+      <div class="status-check">✓</div>
+      <h2>MISIÓN CONFIRMADA</h2>
+      <p>Tu reserva demo quedó agregada a tu cuenta.</p>
+      <a class="btn-primary" href="comunidad.html">VER MI CUENTA</a>
+    </div>
+  </section>
+</main>
+<script src="js/demo-auth.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

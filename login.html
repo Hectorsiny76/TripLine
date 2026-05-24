@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceso | TRIP LINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="account-page">
+<nav>
+  <a href="index.html" class="nav-logo glitch">TRIP<span>LINE</span></a>
+  <a class="account-return" href="index.html">VOLVER AL INICIO</a>
+</nav>
+<main class="auth-shell">
+  <section class="auth-promo">
+    <div class="section-label">COMUNIDAD DE EXPEDICIÓN</div>
+    <h1>ENTRA A<br><span>TRIP LINE</span></h1>
+    <p>Inicia tus propios lives, reserva experiencias y construye tu historial de misiones.</p>
+  </section>
+  <section class="auth-panel" aria-label="Acceso de cuenta">
+    <div class="demo-notice">MODO DEMOSTRACIÓN — NO SE CREAN CUENTAS REALES NI SE REALIZAN COBROS.</div>
+    <h2>INICIAR SESIÓN</h2>
+    <div class="social-auth">
+      <button class="social-button" type="button" data-demo-provider="Google"><strong>G</strong> CONTINUAR CON GOOGLE</button>
+      <button class="social-button" type="button" data-demo-provider="Facebook"><strong>f</strong> CONTINUAR CON FACEBOOK</button>
+    </div>
+    <div class="auth-separator"><span>O CON CORREO</span></div>
+    <form id="loginForm" class="auth-form">
+      <label>NOMBRE
+        <input name="name" type="text" autocomplete="name" placeholder="Tu nombre de explorador" required>
+      </label>
+      <label>CORREO
+        <input name="email" type="email" autocomplete="email" placeholder="correo@ejemplo.com" required>
+      </label>
+      <label>CONTRASEÑA
+        <input name="password" type="password" minlength="4" placeholder="••••••••" required>
+      </label>
+      <button class="btn-primary auth-submit" type="submit">CREAR CUENTA / ENTRAR</button>
+    </form>
+  </section>
+</main>
+<script src="js/demo-auth.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

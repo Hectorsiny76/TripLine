@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destinos | TRIP LINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="destination-page">
+<nav>
+  <a href="index.html" class="nav-logo glitch">TRIP<span>LINE</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#streams">STREAMS</a></li>
+    <li><a href="index.html#destinos">DESTINOS</a></li>
+    <li><a href="index.html#paquetes">PAQUETES</a></li>
+    <li><a href="comunidad.html" data-community-link>COMUNIDAD</a></li>
+  </ul>
+  <a class="nav-live-badge" href="index.html#streams">LIVE NOW — 3</a>
+</nav>
+
+<main>
+  <section class="destination-hero" id="destinationHero">
+    <div class="destination-hero__image" id="destinationImage"></div>
+    <div class="destination-hero__veil"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="destination-hero__content">
+      <a class="destination-back" href="index.html#destinos">← VOLVER A EXPEDICIONES</a>
+      <div class="section-label" id="destinationType">BUCEO EXTREMO + KAYAK</div>
+      <h1 class="destination-name" id="destinationName">ISLA ESPÍRITU SANTO</h1>
+      <p class="destination-lead" id="destinationLead"></p>
+      <div class="destination-facts">
+        <div class="destination-fact"><span>DIFICULTAD</span><strong id="destinationDifficulty"></strong></div>
+        <div class="destination-fact"><span>DURACIÓN</span><strong id="destinationDuration"></strong></div>
+        <div class="destination-fact"><span>REGIÓN</span><strong id="destinationRegion"></strong></div>
+      </div>
+      <div class="destination-actions">
+        <a href="checkout.html?package=extreme" class="btn-primary">RESERVAR MISIÓN</a>
+        <a href="index.html#streams" class="btn-ghost"><span class="live-dot"></span>VER LIVE FEED</a>
+      </div>
+    </div>
+    <div class="hud-corner tl"></div>
+    <div class="hud-corner tr"></div>
+    <div class="hud-corner bl"></div>
+    <div class="hud-corner br"></div>
+  </section>
+
+  <section class="destination-catalog">
+    <div class="section-label">SIGUIENTES DESAFÍOS</div>
+    <h2 class="destination-catalog__title">ELIGE TU PRÓXIMA RUTA</h2>
+    <div class="destination-options">
+      <a class="destination-option" data-destination="espiritu-santo" href="destinos.html?destino=espiritu-santo">
+        <div class="destination-option__media destino-bg--espiritu"></div>
+        <div class="destination-option__body"><strong>ISLA ESPÍRITU SANTO</strong><span>BUCEO + KAYAK</span></div>
+      </a>
+      <a class="destination-option" data-destination="selva-lacandona" href="destinos.html?destino=selva-lacandona">
+        <div class="destination-option__media destino-bg--lacandona"></div>
+        <div class="destination-option__body"><strong>SELVA LACANDONA</strong><span>SURVIVAL + TREK</span></div>
+      </a>
+      <a class="destination-option" data-destination="zona-silencio" href="destinos.html?destino=zona-silencio">
+        <div class="destination-option__media destino-bg--silencio"></div>
+        <div class="destination-option__body"><strong>ZONA DEL SILENCIO</strong><span>DESIERTO + ANOMALÍA</span></div>
+      </a>
+      <a class="destination-option" data-destination="huasteca-potosina" href="destinos.html?destino=huasteca-potosina">
+        <div class="destination-option__media destino-bg--huasteca"></div>
+        <div class="destination-option__body"><strong>HUASTECA POTOSINA</strong><span>RAPPEL + CASCADAS</span></div>
+      </a>
+      <a class="destination-option" data-destination="pico-orizaba" href="destinos.html?destino=pico-orizaba">
+        <div class="destination-option__media destino-bg--orizaba"></div>
+        <div class="destination-option__body"><strong>PICO DE ORIZABA</strong><span>ALTURA + WINGSUIT</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<script src="js/demo-auth.js" defer></script>
+<script src="js/destinos.js" defer></script>
+</body>
+</html>

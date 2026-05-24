@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunidad | TRIP LINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="community-page">
+<nav>
+  <a href="index.html" class="nav-logo glitch">TRIP<span>LINE</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#streams">STREAMS</a></li>
+    <li><a href="index.html#destinos">DESTINOS</a></li>
+    <li><a href="index.html#paquetes">PAQUETES</a></li>
+    <li><a href="comunidad.html" class="is-current">COMUNIDAD</a></li>
+  </ul>
+  <div class="account-chip"><span data-session-name></span><button type="button" id="logoutButton">SALIR</button></div>
+</nav>
+
+<main class="community-main">
+  <header class="community-header">
+    <div>
+      <div class="section-label">RED DE AVENTUREROS</div>
+      <h1>COMUNIDAD LIVE</h1>
+      <p>Comparte una expedición, descubre nuevas rutas y activa tu próxima misión.</p>
+    </div>
+    <button type="button" class="btn-primary" id="openLiveComposer">INICIAR MI LIVE</button>
+  </header>
+
+  <section class="creator-panel" id="creatorPanel" hidden>
+    <div class="creator-panel__header">
+      <div>
+        <div class="section-label">NUEVA TRANSMISIÓN</div>
+        <h2>CONFIGURA TU LIVE</h2>
+      </div>
+      <button class="icon-close" type="button" id="closeLiveComposer" aria-label="Cerrar">×</button>
+    </div>
+    <form class="live-form" id="liveForm">
+      <label>TÍTULO DEL LIVE
+        <input name="title" required maxlength="48" placeholder="Ascenso nocturno al Pico">
+      </label>
+      <label>DESTINO
+        <select name="destination">
+          <option>Isla Espíritu Santo</option>
+          <option>Selva Lacandona</option>
+          <option>Zona del Silencio</option>
+          <option>Huasteca Potosina</option>
+          <option>Pico de Orizaba</option>
+        </select>
+      </label>
+      <label>TIPO DE RETO
+        <select name="activity">
+          <option>Trekking</option>
+          <option>Buceo</option>
+          <option>Rappel</option>
+          <option>Wingsuit</option>
+          <option>Supervivencia</option>
+        </select>
+      </label>
+      <button type="submit" class="btn-primary">GENERAR TRANSMISIÓN</button>
+    </form>
+    <div class="stream-setup" id="streamSetup" hidden>
+      <div class="demo-notice">DEMO: LOS DATOS RTMP SE MUESTRAN COMO EXPERIENCIA VISUAL; ESTE LIVE NO PUBLICA VIDEO REAL.</div>
+      <div class="setup-grid">
+        <div><span>SERVIDOR PRISM</span><strong id="setupServer"></strong></div>
+        <div><span>STREAM KEY</span><strong id="setupKey"></strong></div>
+      </div>
+      <button class="btn-ghost" type="button" id="publishDemoLive">SIMULAR QUE YA ESTOY EN VIVO</button>
+    </div>
+  </section>
+
+  <section class="community-streams">
+    <div class="community-section-title">
+      <div class="section-label">AHORA EN LÍNEA</div>
+      <h2>LIVE FEEDS</h2>
+    </div>
+    <div class="community-grid" id="communityGrid"></div>
+  </section>
+
+  <section class="my-activity">
+    <div>
+      <div class="section-label">MI CUENTA</div>
+      <h2>MISIONES RESERVADAS</h2>
+    </div>
+    <div class="orders-list" id="ordersList"></div>
+  </section>
+</main>
+<script src="js/demo-auth.js"></script>
+<script src="js/comunidad.js"></script>
+</body>
+</html>
