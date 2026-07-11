@@ -20,14 +20,28 @@ document.querySelectorAll('a,button,.btn-primary,.btn-ghost,.destino-card,.strea
 // ══════════════════════════════════════════════
 const streamConfig = window.TRIPLINE_STREAM_CONFIG || {};
 const HLS_BASE_URL = (streamConfig.hlsBaseUrl || '').replace(/\/$/, '');
+const PLAYBACK_URLS = streamConfig.playbackUrls || [];
 
 function streamUrlFor(path) {
   return HLS_BASE_URL && path ? `${HLS_BASE_URL}/${path}/index.m3u8` : '';
 }
 
-const STREAM_1_URL = streamUrlFor(streamConfig.mainPath);
-const STREAM_2_URL = streamUrlFor(streamConfig.sidePaths?.[0]);
-const STREAM_3_URL = streamUrlFor(streamConfig.sidePaths?.[1]);
+const STREAM_1_URL = PLAYBACK_URLS[0] || streamUrlFor(streamConfig.mainPath);
+const STREAM_2_URL = PLAYBACK_URLS[1] || streamUrlFor(streamConfig.sidePaths?.[0]);
+const STREAM_3_URL = PLAYBACK_URLS[2] || streamUrlFor(streamConfig.sidePaths?.[1]);
+const PUBLISH_URLS = streamConfig.publishUrls || [];
+const STREAM_1_PUBLISH_URL = PUBLISH_URLS[0] || '';
+const STREAM_2_PUBLISH_URL = PUBLISH_URLS[1] || '';
+const STREAM_3_PUBLISH_URL = PUBLISH_URLS[2] || '';
+const STREAM_KEYS = streamConfig.streamKeys || [];
+const STREAM_1_KEY = STREAM_KEYS[0] || '';
+const STREAM_2_KEY = STREAM_KEYS[1] || '';
+const STREAM_3_KEY = STREAM_KEYS[2] || '';
+
+function endpointLabel(playbackUrl, publishUrl, streamKey) {
+  if (publishUrl || playbackUrl || streamKey) return 'ENLACE PREPARADO // ESPERANDO SEÑAL';
+  return 'PREVIEW DE EXPEDICIÓN';
+}
 
 const endpointEl = document.getElementById('stream-endpoint');
 if (endpointEl) {
@@ -38,6 +52,12 @@ if (endpointEl) {
 
 // ── VOD STORAGE ────────────────────────────────
 // Saved streams are stored in localStorage as JSON array
+if (endpointEl) endpointEl.textContent = endpointLabel(STREAM_1_URL, STREAM_1_PUBLISH_URL, STREAM_1_KEY);
+const sideEndpoint2 = document.getElementById('side-endpoint-2');
+const sideEndpoint3 = document.getElementById('side-endpoint-3');
+if (sideEndpoint2) sideEndpoint2.textContent = endpointLabel(STREAM_2_URL, STREAM_2_PUBLISH_URL, STREAM_2_KEY);
+if (sideEndpoint3) sideEndpoint3.textContent = endpointLabel(STREAM_3_URL, STREAM_3_PUBLISH_URL, STREAM_3_KEY);
+
 const VOD_KEY = 'tripline_vod';
 function getVODs() {
   try { return JSON.parse(localStorage.getItem(VOD_KEY)) || []; }
@@ -92,7 +112,7 @@ function showConnecting(msg) {
   elConnecting.style.display = 'flex';
   elOffline.style.display = 'none';
   elControls.style.display = 'none';
-  if (elStatus) elStatus.textContent = msg || 'CONECTANDO SEÑAL...';
+  if (elStatus) elStatus.textContent = msg || 'ESPERANDO TRANSMISION';
 }
 function showLive() {
   elConnecting.style.display = 'none';
@@ -135,7 +155,7 @@ function onStreamEnded() {
     const h = Math.floor(dur/3600), m = Math.floor((dur%3600)/60), s = dur%60;
     saveVOD({
       url: streamUrl,
-      title: `WINGSUIT — PICO DE ORIZABA`,
+      title: `EXPEDICIÓN EN DIRECTO`,
       date: liveStartTime.toLocaleDateString('es-MX', {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}),
       duration: `${h>0?h+'h ':' '}${m}m ${s}s`
     });
@@ -158,6 +178,7 @@ function scheduleRetry() {
 function initHLS() {
   if (!streamUrl) {
     elStatus && (elStatus.textContent = 'MODO PREVIEW — SIN CANAL CONFIGURADO');
+    if (STREAM_1_PUBLISH_URL && elStatus) elStatus.textContent = 'ESPERANDO TRANSMISION';
     renderVODs();
     return;
   }
@@ -185,7 +206,7 @@ function initHLS() {
     hls.attachMedia(video);
 
     hls.on(Hls.Events.MANIFEST_PARSED, () => { onStreamStarted(); });
-    hls.on(Hls.Events.MEDIA_ATTACHED, () => { showConnecting('SEÑAL DETECTADA — CARGANDO...'); });
+    hls.on(Hls.Events.MEDIA_ATTACHED, () => { showConnecting('ESPERANDO TRANSMISION'); });
 
     hls.on(Hls.Events.ERROR, (event, data) => {
       const isWaitingForSignal =
@@ -328,7 +349,9 @@ function updateClock() {
   const now = new Date();
   const t = now.toLocaleTimeString('es-MX', {hour12:false});
   const el = document.getElementById('stream-time');
-  if (el) el.textContent = `MX TIME — ${t}`;
+  if (el) el.textContent = 'MX TIME — ' + t;
+  const broadcastClock = document.getElementById('broadcast-clock');
+  if (broadcastClock) broadcastClock.textContent = t + ' CST';
 }
 setInterval(updateClock, 1000);
 updateClock();
@@ -342,8 +365,26 @@ setInterval(() => {
   if (hrEl) hrEl.textContent = randomInt(138,156);
   if (vEl) vEl.textContent = randomInt(2700,2900).toLocaleString();
   if (altEl) altEl.textContent = (4890+randomInt(-10,10)).toLocaleString();
+  const latencyEl = document.getElementById('signal-latency');
+  const bitrateEl = document.getElementById('signal-bitrate');
+  if (latencyEl) latencyEl.textContent = randomInt(36,58) + ' MS';
+  if (bitrateEl) bitrateEl.textContent = (randomInt(62,76)/10).toFixed(1) + ' MBPS';
 }, 2500);
 
+const transmissionMessages = [
+  'INICIALIZANDO CANAL SEGURO...',
+  'SINCRONIZANDO AUDIO Y VIDEO...',
+  'GPS BLOQUEADO // TELEMETRÍA ACTIVA',
+  'ESPERANDO PAQUETES DEL DISPOSITIVO...',
+  'REDUNDANCIA DE SEÑAL PREPARADA'
+];
+let transmissionMessageIndex = 0;
+setInterval(() => {
+  const log = document.getElementById('transmission-log');
+  if (!log) return;
+  transmissionMessageIndex = (transmissionMessageIndex + 1) % transmissionMessages.length;
+  log.textContent = transmissionMessages[transmissionMessageIndex];
+}, 2800);
 // ── SCROLL REVEAL ──────────────────────────────
 const observer = new IntersectionObserver(entries => {
   entries.forEach((e,i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*80); });
@@ -359,11 +400,11 @@ document.querySelectorAll('.glitch').forEach(el => {
 });
 
 // ── BOOT ───────────────────────────────────────
-showConnecting('CONECTANDO SEÑAL...');
+showConnecting('CONECTANDO CON LA EXPEDICIÓN');
 initHLS();
 
 // ── SIDE STREAMS ───────────────────────────────
-function initSideStream(videoId, url) {
+function initSideStream(videoId, url, statusId) {
   if (!url || !HLS_AVAILABLE) return; // no URL configured
   const v = document.getElementById(videoId);
   if (!v) return;
@@ -373,11 +414,11 @@ function initSideStream(videoId, url) {
     const h = new Hls({ enableWorker: true, lowLatencyMode: true });
     h.loadSource(url);
     h.attachMedia(v);
-    h.on(Hls.Events.MANIFEST_PARSED, () => { v.muted = true; v.play(); });
+    h.on(Hls.Events.MANIFEST_PARSED, () => { v.muted = true; v.play(); const status = document.getElementById(statusId); if (status) status.textContent = 'SEÑAL EN VIVO // LOW LATENCY'; });
     h.on(Hls.Events.ERROR, (e, d) => { if (d.fatal) h.destroy(); });
   } else if (v.canPlayType('application/vnd.apple.mpegurl')) {
-    v.src = url; v.muted = true; v.play();
+    v.src = url; v.muted = true; v.play(); const status = document.getElementById(statusId); if (status) status.textContent = 'SEÑAL EN VIVO // LOW LATENCY';
   }
 }
-initSideStream('side-video-2', STREAM_2_URL);
-initSideStream('side-video-3', STREAM_3_URL);
+initSideStream('side-video-2', STREAM_2_URL, 'side-endpoint-2');
+initSideStream('side-video-3', STREAM_3_URL, 'side-endpoint-3');

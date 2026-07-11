@@ -70,7 +70,7 @@ document.getElementById('liveForm').addEventListener('submit', (event) => {
     viewers: 1,
     imageClass: imageClassFor(destination)
   };
-  document.getElementById('setupServer').textContent = 'TRIPLINE / LIVE DEMO';
+  document.getElementById('setupServer').textContent = 'TRIPLINE / LIVE';
   document.getElementById('setupKey').textContent = `${slug}-${Date.now().toString().slice(-6)}`;
   document.getElementById('streamSetup').hidden = false;
 });

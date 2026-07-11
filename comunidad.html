@@ -15,7 +15,9 @@
     <li><a href="index.html#streams">STREAMS</a></li>
     <li><a href="index.html#destinos">DESTINOS</a></li>
     <li><a href="index.html#paquetes">PAQUETES</a></li>
+    <li><a href="dashboard.html">DASHBOARD</a></li>
     <li><a href="comunidad.html" class="is-current">COMUNIDAD</a></li>
+    <li class="nav-more"><button class="nav-more-trigger" type="button" aria-haspopup="true">MÁS</button><div class="nav-more-menu"><a href="streams.html">ARCHIVO</a><a href="tienda.html">TIENDA</a><a href="ayuda.html">AYUDA</a><a href="admin.html">OPERACIONES</a></div></li>
   </ul>
   <div class="account-chip"><span data-session-name></span><button type="button" id="logoutButton">SALIR</button></div>
 </nav>
@@ -63,12 +65,11 @@
       <button type="submit" class="btn-primary">GENERAR TRANSMISIÓN</button>
     </form>
     <div class="stream-setup" id="streamSetup" hidden>
-      <div class="demo-notice">DEMO: LOS DATOS RTMP SE MUESTRAN COMO EXPERIENCIA VISUAL; ESTE LIVE NO PUBLICA VIDEO REAL.</div>
       <div class="setup-grid">
-        <div><span>CANAL DE DEMOSTRACIÓN</span><strong id="setupServer"></strong></div>
+        <div><span>CANAL RTMP</span><strong id="setupServer"></strong></div>
         <div><span>STREAM KEY</span><strong id="setupKey"></strong></div>
       </div>
-      <button class="btn-ghost" type="button" id="publishDemoLive">SIMULAR QUE YA ESTOY EN VIVO</button>
+      <button class="btn-ghost" type="button" id="publishDemoLive">PUBLICAR LIVE</button>
     </div>
   </section>
 

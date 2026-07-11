@@ -1,0 +1,9 @@
+function adminRender() {
+ const orders = getTriplineStore(TRIPLINE_ORDERS_KEY); const lives = getTriplineStore(TRIPLINE_LIVES_KEY); const support = getTriplineStore('tripline_demo_support');
+ document.getElementById('adminOrders').textContent = orders.length; document.getElementById('adminLives').textContent = lives.length; document.getElementById('adminSupport').textContent = support.length;
+ document.getElementById('adminDepartures').innerHTML = Object.entries(TRIPLINE_DATA.destinations).map(([slug, item]) => `<div class="dashboard-row"><strong>${item.name}</strong><span>${item.dates[0]}</span><em>${item.capacity} CUPOS</em></div>`).join('');
+ document.getElementById('adminOrderList').innerHTML = orders.length ? orders.slice(0, 6).map((order) => `<div class="dashboard-row"><strong>${order.destinationName || order.packageName}</strong><span>${order.reference}</span><em>${order.travelers || 1} PAX</em></div>`).join('') : '<p class="empty-state">Sin reservas locales.</p>';
+ document.getElementById('adminSupportList').innerHTML = support.length ? support.slice(0, 6).map((item) => `<div class="dashboard-row"><strong>${item.name}</strong><span>${item.id}</span><em>${item.status}</em></div>`).join('') : '<p class="empty-state">Sin solicitudes.</p>';
+}
+document.getElementById('seedDemo').addEventListener('click', () => { if (!getTriplineStore(TRIPLINE_ORDERS_KEY).length) setTriplineStore(TRIPLINE_ORDERS_KEY, [{ name: 'Mariana Torres', email: 'mariana@tripline.mx', destinationName: 'Huasteca Potosina', packageName: 'EXTREME', travelers: 2, reference: 'TRP-2026-001', dateIso: new Date().toISOString() }]); adminRender(); });
+adminRender();

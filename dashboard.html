@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | TRIP LINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="dashboard-page">
+<a class="skip-link" href="#dashboardContent">Saltar al contenido</a>
+<nav>
+  <a href="index.html" class="nav-logo glitch">TRIP<span>LINE</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#streams">STREAMS</a></li>
+    <li><a href="index.html#destinos">DESTINOS</a></li>
+    <li><a href="index.html#paquetes">PAQUETES</a></li>
+    <li><a href="dashboard.html" class="is-current">DASHBOARD</a></li>
+    <li><a href="comunidad.html">COMUNIDAD</a></li>
+    <li class="nav-more"><button class="nav-more-trigger" type="button" aria-haspopup="true">MÁS</button><div class="nav-more-menu"><a href="streams.html">ARCHIVO</a><a href="tienda.html">TIENDA</a><a href="ayuda.html">AYUDA</a><a href="admin.html">OPERACIONES</a></div></li>
+  </ul>
+  <div class="account-chip"><span data-session-name></span><button type="button" id="dashboardLogout">SALIR</button></div>
+</nav>
+
+<main class="dashboard-main" id="dashboardContent">
+  <header class="dashboard-hero">
+    <div>
+      <div class="section-label">CENTRO DE CONTROL</div>
+      <h1>MI DASHBOARD</h1>
+      <p id="dashboardWelcome">Resumen de misiones, reservas y actividad live.</p>
+    </div>
+    <div class="dashboard-actions">
+      <a class="btn-primary" href="reserva.html">RESERVAR MISIÓN</a>
+      <a class="btn-ghost" href="comunidad.html"><span class="live-dot"></span>INICIAR LIVE</a>
+      <a class="btn-ghost" href="admin.html">OPERACIONES</a>
+    </div>
+  </header>
+
+  <section class="dashboard-stats" aria-label="Indicadores de cuenta">
+    <article>
+      <span>RESERVAS</span>
+      <strong id="statOrders">0</strong>
+      <small>Misiones confirmadas</small>
+    </article>
+    <article>
+      <span>LIVES</span>
+      <strong id="statLives">0</strong>
+      <small>Transmisiones activas</small>
+    </article>
+    <article>
+      <span>NIVEL</span>
+      <strong id="statLevel">ROOKIE</strong>
+      <small>Perfil de explorador</small>
+    </article>
+  </section>
+
+  <section class="dashboard-grid">
+    <article class="dashboard-panel">
+      <div class="section-label">PROXIMA ACCION</div>
+      <h2>Flujo recomendado</h2>
+      <ol class="mission-steps">
+        <li>Explorar destinos extremos desde Home.</li>
+        <li>Reservar paquete Standard o Extreme.</li>
+        <li>Revisar ticket y mision en este dashboard.</li>
+        <li>Publicar un live desde Comunidad.</li>
+      </ol>
+    </article>
+
+    <article class="dashboard-panel">
+      <div class="section-label">MIS RESERVAS</div>
+      <h2>Misiones confirmadas</h2>
+      <div id="dashboardOrders" class="dashboard-list"></div>
+    </article>
+
+    <article class="dashboard-panel">
+      <div class="section-label">MI ACTIVIDAD LIVE</div>
+      <h2>Transmisiones</h2>
+      <div id="dashboardLives" class="dashboard-list"></div>
+    </article>
+  </section>
+</main>
+<script src="js/demo-auth.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

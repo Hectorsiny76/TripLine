@@ -1,4 +1,4 @@
-const nextPage = new URLSearchParams(window.location.search).get('next') || 'comunidad.html';
+const nextPage = new URLSearchParams(window.location.search).get('next') || 'dashboard.html';
 
 function finishDemoLogin(user) {
   const users = getTriplineStore(TRIPLINE_USERS_KEY);

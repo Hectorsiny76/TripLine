@@ -11,7 +11,10 @@
 <body class="account-page">
 <nav>
   <a href="index.html" class="nav-logo glitch">TRIP<span>LINE</span></a>
-  <a class="account-return" href="index.html">VOLVER AL INICIO</a>
+  <div class="account-nav-actions">
+    <a class="account-return" href="registro.html">CREAR CUENTA</a>
+    <a class="account-return" href="index.html">VOLVER AL INICIO</a>
+  </div>
 </nav>
 <main class="auth-shell">
   <section class="auth-promo">
@@ -20,7 +23,6 @@
     <p>Inicia tus propios lives, reserva experiencias y construye tu historial de misiones.</p>
   </section>
   <section class="auth-panel" aria-label="Acceso de cuenta">
-    <div class="demo-notice">MODO DEMOSTRACIÓN — NO SE CREAN CUENTAS REALES NI SE REALIZAN COBROS.</div>
     <h2>INICIAR SESIÓN</h2>
     <div class="social-auth">
       <button class="social-button" type="button" data-demo-provider="Google"><strong>G</strong> CONTINUAR CON GOOGLE</button>
@@ -39,6 +41,7 @@
       </label>
       <button class="btn-primary auth-submit" type="submit">CREAR CUENTA / ENTRAR</button>
     </form>
+    <p class="auth-switch">Si quieres separar el alta del acceso, usa <a href="registro.html">Registro</a>.</p>
   </section>
 </main>
 <script src="js/demo-auth.js"></script>

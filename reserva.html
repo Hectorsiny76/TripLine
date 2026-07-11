@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Configura una expedición TRIP LINE: destino, fecha, viajeros y paquete.">
+<title>Reservar expedición | TRIP LINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="booking-page">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<nav aria-label="Navegación principal">
+  <a href="index.html" class="nav-logo">TRIP<span>LINE</span></a>
+  <ul class="nav-links"><li><a href="index.html#destinos">DESTINOS</a></li><li><a href="streams.html">STREAMS</a></li><li><a href="ayuda.html">SEGURIDAD</a></li><li><a href="dashboard.html" data-dashboard-link>CUENTA</a></li></ul>
+  <a class="account-return" href="index.html#destinos">CANCELAR</a>
+</nav>
+<main id="contenido" class="booking-shell">
+  <section class="booking-intro">
+    <div class="section-label">CONFIGURADOR DE MISIÓN</div>
+    <h1>ARMA TU<br><span>EXPEDICIÓN</span></h1>
+    <p>Selecciona destino, fecha, número de viajeros y nivel de expedición.</p>
+    <div class="booking-trust"><strong>✓ GUÍAS CERTIFICADOS</strong><strong>✓ PROTOCOLO DE EMERGENCIA</strong><strong>✓ PAGO TOKENIZADO</strong></div>
+  </section>
+  <section class="booking-panel">
+    <form id="bookingForm" class="booking-form">
+      <label>DESTINO<select name="destination" id="bookingDestination" required></select></label>
+      <div class="payment-row">
+        <label>FECHA<select name="date" id="bookingDate" required></select></label>
+        <label>VIAJEROS<select name="travelers" id="bookingTravelers"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+      </div>
+      <fieldset><legend>PAQUETE</legend><label class="package-choice"><input type="radio" name="package" value="standard" checked><span><strong>STANDARD</strong><small id="standardDescription"></small></span></label><label class="package-choice"><input type="radio" name="package" value="extreme"><span><strong>EXTREME</strong><small id="extremeDescription"></small></span></label></fieldset>
+      <div class="booking-summary" aria-live="polite"><span id="bookingRoute"></span><strong id="bookingTotal"></strong><small id="bookingCapacity"></small></div>
+      <button class="btn-primary" type="submit">CONTINUAR AL CHECKOUT</button>
+    </form>
+  </section>
+</main>
+<script src="js/tripline-data.js"></script><script src="js/demo-auth.js"></script><script src="js/reserva.js"></script>
+</body>
+</html>

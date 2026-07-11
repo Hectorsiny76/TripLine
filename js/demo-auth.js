@@ -44,6 +44,10 @@ function refreshAuthNavigation() {
   document.querySelectorAll('[data-community-link]').forEach((link) => {
     link.textContent = session ? 'MI COMUNIDAD' : 'COMUNIDAD';
   });
+  document.querySelectorAll('[data-dashboard-link]').forEach((link) => {
+    link.textContent = session ? 'DASHBOARD' : 'ENTRAR';
+    link.href = session ? 'dashboard.html' : 'login.html?next=dashboard.html';
+  });
   document.querySelectorAll('[data-session-name]').forEach((label) => {
     label.textContent = session ? session.name : '';
   });

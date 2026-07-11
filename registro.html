@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro | TRIP LINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="account-page">
+<nav>
+  <a href="index.html" class="nav-logo glitch">TRIP<span>LINE</span></a>
+  <div class="account-nav-actions">
+    <a class="account-return" href="login.html">YA TENGO CUENTA</a>
+    <a class="account-return" href="index.html">VOLVER AL INICIO</a>
+  </div>
+</nav>
+<main class="auth-shell auth-shell--register">
+  <section class="auth-promo">
+    <div class="section-label">NUEVO EXPLORADOR</div>
+    <h1>ACTIVA TU<br><span>PERFIL</span></h1>
+    <p>Crea tu cuenta para reservar misiones, guardar tickets y publicar transmisiones.</p>
+  </section>
+  <section class="auth-panel" aria-label="Registro de cuenta">
+    <h2>REGISTRO</h2>
+    <form id="registerForm" class="auth-form">
+      <label>NOMBRE
+        <input name="name" type="text" autocomplete="name" placeholder="Tu nombre de explorador" required>
+      </label>
+      <label>CORREO
+        <input name="email" type="email" autocomplete="email" placeholder="correo@ejemplo.com" required>
+      </label>
+      <label>DESTINO FAVORITO
+        <input name="favorite" type="text" placeholder="Pico de Orizaba, Huasteca, Selva...">
+      </label>
+      <label>CONTRASEÑA
+        <input name="password" type="password" minlength="4" placeholder="Crea una contraseña segura" required>
+      </label>
+      <button class="btn-primary auth-submit" type="submit">CREAR PERFIL</button>
+    </form>
+    <p class="auth-switch">Despues del registro entraras directo al <a href="dashboard.html">Dashboard</a>.</p>
+  </section>
+</main>
+<script src="js/demo-auth.js"></script>
+<script src="js/registro.js"></script>
+</body>
+</html>

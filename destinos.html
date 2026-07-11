@@ -15,9 +15,11 @@
     <li><a href="index.html#streams">STREAMS</a></li>
     <li><a href="index.html#destinos">DESTINOS</a></li>
     <li><a href="index.html#paquetes">PAQUETES</a></li>
+    <li><a href="dashboard.html" data-dashboard-link>DASHBOARD</a></li>
     <li><a href="comunidad.html" data-community-link>COMUNIDAD</a></li>
+    <li class="nav-more"><button class="nav-more-trigger" type="button" aria-haspopup="true">MÁS</button><div class="nav-more-menu"><a href="streams.html">ARCHIVO</a><a href="tienda.html">TIENDA</a><a href="ayuda.html">AYUDA</a><a href="admin.html">OPERACIONES</a></div></li>
   </ul>
-  <a class="nav-live-badge" href="index.html#streams">LIVE NOW — 3</a>
+  <a class="nav-live-badge" href="index.html#streams">LIVE NOW — <span data-live-count>1</span></a>
 </nav>
 
 <main>
@@ -36,7 +38,7 @@
         <div class="destination-fact"><span>REGIÓN</span><strong id="destinationRegion"></strong></div>
       </div>
       <div class="destination-actions">
-        <a href="checkout.html?package=extreme" class="btn-primary">RESERVAR MISIÓN</a>
+        <a href="reserva.html" id="destinationBookingLink" class="btn-primary">RESERVAR MISIÓN</a>
         <a href="index.html#streams" class="btn-ghost"><span class="live-dot"></span>VER LIVE FEED</a>
       </div>
     </div>
@@ -75,6 +77,7 @@
 </main>
 
 <script src="js/demo-auth.js" defer></script>
+<script src="js/live-presence.js" defer></script>
 <script src="js/destinos.js" defer></script>
 </body>
 </html>
