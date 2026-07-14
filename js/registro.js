@@ -1,25 +1,70 @@
 const registerNextPage = new URLSearchParams(window.location.search).get('next') || 'dashboard.html';
 
-document.getElementById('registerForm').addEventListener('submit', (event) => {
+document.getElementById('registerForm').addEventListener('submit', async function (event){
   event.preventDefault();
+
   const form = new FormData(event.currentTarget);
+
   const user = {
     name: form.get('name').trim(),
     email: form.get('email').trim().toLowerCase(),
     favorite: form.get('favorite').trim() || 'Pico de Orizaba',
-    provider: 'Registro local',
-    createdAt: new Date().toISOString()
-  };
-
-  const users = getTriplineStore(TRIPLINE_USERS_KEY);
-  const existingIndex = users.findIndex((saved) => saved.email === user.email);
-  if (existingIndex >= 0) {
-    users[existingIndex] = { ...users[existingIndex], ...user };
-  } else {
-    users.push(user);
+    provider_name: 'Registro local',
+    provider_id: 1,
+    password: form.get('password').trim(),
   }
 
-  setTriplineStore(TRIPLINE_USERS_KEY, users);
-  setTriplineSession(user);
-  window.location.href = registerNextPage;
+  try{
+
+    const response = await axios.post('http://tripline-api.test/api/register', user)
+
+    const token = response.data.token;
+
+    localStorage.setItem('auth_token', token);
+
+    setTriplineSession(response.data.user);
+
+    window.location.href = registerNextPage;
+
+  } catch(error){
+
+    const errorDiv = document.getElementById('error-messages');
+
+    errorDiv.innerHTML = '';
+
+    if(error.response && error.response.status === 422){
+
+        const validationErrors = error.response.data.errors;
+
+        for(const field in validationErrors){
+          errorDiv.innerHTML += `<p>${validationErrors[field][0]}</p>`;
+        }
+
+    } else {
+      errorDiv.innerHTML = '<p>Oops... Algo salió mal.</p>';
+      console.error(error);
+    }
+
+  }
+
+  // const user = {
+  //   name: form.get('name').trim(),
+  //   email: form.get('email').trim().toLowerCase(),
+  //   favorite: form.get('favorite').trim() || 'Pico de Orizaba',
+  //   provider_name: 'Registro local',
+  //   provider_id: 1,
+  //   password: form.get('password').trim(),
+  // };
+  //
+  // const users = getTriplineStore(TRIPLINE_USERS_KEY);
+  // const existingIndex = users.findIndex((saved) => saved.email === user.email);
+  // if (existingIndex >= 0) {
+  //   users[existingIndex] = { ...users[existingIndex], ...user };
+  // } else {
+  //   users.push(user);
+  // }
+  //
+  // setTriplineStore(TRIPLINE_USERS_KEY, users);
+  // setTriplineSession(user);
+  // window.location.href = registerNextPage;
 });
