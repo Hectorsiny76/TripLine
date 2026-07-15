@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body class="account-page">
 <nav>
@@ -30,18 +31,16 @@
     </div>
     <div class="auth-separator"><span>O CON CORREO</span></div>
     <form id="loginForm" class="auth-form">
-      <label>NOMBRE
-        <input name="name" type="text" autocomplete="name" placeholder="Tu nombre de explorador" required>
-      </label>
       <label>CORREO
         <input name="email" type="email" autocomplete="email" placeholder="correo@ejemplo.com" required>
       </label>
       <label>CONTRASEÑA
-        <input name="password" type="password" minlength="4" placeholder="••••••••" required>
+        <input name="password" type="password" minlength="8" placeholder="••••••••" required>
       </label>
+      <div id="error-messages" style="color: red"></div>
       <button class="btn-primary auth-submit" type="submit">CREAR CUENTA / ENTRAR</button>
     </form>
-    <p class="auth-switch">Si quieres separar el alta del acceso, usa <a href="registro.html">Registro</a>.</p>
+    <p class="auth-switch">Si no tienes una cuenta <a href="registro.html">Registrate</a>.</p>
   </section>
 </main>
 <script src="js/demo-auth.js"></script>

@@ -10,6 +10,8 @@ function finishDemoLogin(user) {
   window.location.href = nextPage;
 }
 
+
+// PROVIDER
 document.querySelectorAll('[data-demo-provider]').forEach((button) => {
   button.addEventListener('click', () => {
     const provider = button.dataset.demoProvider;
@@ -21,12 +23,36 @@ document.querySelectorAll('[data-demo-provider]').forEach((button) => {
   });
 });
 
-document.getElementById('loginForm').addEventListener('submit', (event) => {
+
+// LOCAL
+document.getElementById('loginForm').addEventListener('submit', async function (event) {
+
   event.preventDefault();
+
   const form = new FormData(event.currentTarget);
-  finishDemoLogin({
-    name: form.get('name').trim(),
+
+  const credentials = {
     email: form.get('email').trim().toLowerCase(),
-    provider: 'Correo local'
-  });
+    password: form.get('password').trim()
+  }
+
+  try{
+
+    const response = await axios.post('http://tripline-api.test/api/login', credentials);
+
+    const token = response.data.token;
+
+    localStorage.setItem('auth_token', token);
+
+    finishDemoLogin(response.data.user);
+
+  } catch(error){
+
+    const errorDiv = document.getElementById('error-messages');
+
+    errors(errorDiv, error);
+
+  }
+
+
 });

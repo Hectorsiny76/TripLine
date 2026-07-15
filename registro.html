@@ -36,14 +36,13 @@
         <input name="favorite" type="text" placeholder="Pico de Orizaba, Huasteca, Selva...">
       </label>
       <label>CONTRASEÑA
-        <input name="password" type="password" minlength="4" placeholder="Crea una contraseña segura" required>
+        <input name="password" type="password" minlength="8" placeholder="Crea una contraseña segura" required>
       </label>
+      <div id="error-messages" style="color: red"></div>
       <button class="btn-primary auth-submit" type="submit">CREAR PERFIL</button>
     </form>
     <p class="auth-switch">Despues del registro entraras directo al <a href="dashboard.html">Dashboard</a>.</p>
   </section>
-
-  <div id="error-messages" style="color: red"></div>
 
 </main>
 <script src="js/demo-auth.js"></script>

@@ -9,14 +9,14 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     name: form.get('name').trim(),
     email: form.get('email').trim().toLowerCase(),
     favorite: form.get('favorite').trim() || 'Pico de Orizaba',
-    provider_name: 'Registro local',
+    provider_name: 'Local',
     provider_id: 1,
     password: form.get('password').trim(),
   }
 
   try{
 
-    const response = await axios.post('http://tripline-api.test/api/register', user)
+    const response = await axios.post('http://tripline-api.test/api/register', user);
 
     const token = response.data.token;
 
@@ -30,20 +30,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
     const errorDiv = document.getElementById('error-messages');
 
-    errorDiv.innerHTML = '';
-
-    if(error.response && error.response.status === 422){
-
-        const validationErrors = error.response.data.errors;
-
-        for(const field in validationErrors){
-          errorDiv.innerHTML += `<p>${validationErrors[field][0]}</p>`;
-        }
-
-    } else {
-      errorDiv.innerHTML = '<p>Oops... Algo salió mal.</p>';
-      console.error(error);
-    }
+    errors(errorDiv, error);
 
   }
 

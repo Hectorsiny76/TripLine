@@ -54,3 +54,26 @@ function refreshAuthNavigation() {
 }
 
 refreshAuthNavigation();
+
+function errors( errorDiv, error ){
+  errorDiv.innerHTML = '';
+
+  if(error.response && error.response.status === 422){
+
+    const validationErrors = error.response.data.errors;
+
+    for(const field in validationErrors){
+      errorDiv.innerHTML += `<p>${validationErrors[field][0]}</p>`;
+    }
+
+  } else if(error.response && error.response.status === 401){
+
+    const message = error.response.data.message;
+
+    errorDiv.innerHTML += `<p>${message}</p>`;
+
+  } else {
+    errorDiv.innerHTML = '<p>Oops... Algo salió mal.</p>';
+    console.error(error);
+  }
+}
