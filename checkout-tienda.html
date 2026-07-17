@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Checkout seguro de equipamiento TRIP LINE.">
+  <title>Pago de tienda | TRIP LINE</title>
+<link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="store-checkout-page">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<nav aria-label="Navegación principal">
+  <a href="index.html" class="nav-logo glitch">TRIP<span>LINE</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#streams">STREAMS</a></li>
+    <li><a href="index.html#destinos">DESTINOS</a></li>
+    <li><a href="index.html#paquetes">PAQUETES</a></li>
+    <li><a href="dashboard.html" data-dashboard-link>DASHBOARD</a></li>
+    <li><a href="comunidad.html" data-community-link>COMUNIDAD</a></li>
+    <li class="nav-more"><button class="nav-more-trigger" type="button" aria-haspopup="true">MÁS</button><div class="nav-more-menu"><a href="streams.html">ARCHIVO</a><a href="tienda.html">TIENDA</a><a href="ayuda.html">AYUDA</a><a href="admin.html">OPERACIONES</a></div></li>
+  </ul>
+</nav>
+<main id="contenido" class="store-checkout-shell">
+  <header class="store-checkout-heading">
+    <div class="section-label">CHECKOUT DE EQUIPO</div>
+    <h1>DATOS Y<br><span>PAGO SEGURO</span></h1>
+    <p>Completa la entrega y confirma tu pedido. TRIP LINE no solicita ni almacena números de tarjeta o CVV.</p>
+    <ol class="checkout-steps" aria-label="Progreso de compra"><li class="is-active">01 · DATOS</li><li>02 · PAGO</li><li>03 · TICKET</li></ol>
+  </header>
+
+  <div class="store-checkout-layout" id="checkoutWorkspace">
+    <aside class="store-order-summary" aria-labelledby="summaryTitle">
+      <div class="summary-heading"><div><span>ORDEN ACTUAL</span><h2 id="summaryTitle">TU EQUIPO</h2></div><a href="tienda.html">EDITAR CARRITO</a></div>
+      <div id="storeOrderItems" class="store-order-items"></div>
+      <div class="store-order-totals">
+        <div><span>SUBTOTAL</span><strong id="storeSubtotal"></strong></div>
+        <div><span>ENVÍO</span><strong id="storeShipping"></strong></div>
+        <div class="store-grand-total"><span>TOTAL</span><strong id="storeTotal"></strong></div>
+      </div>
+    </aside>
+
+    <section class="store-checkout-card" aria-labelledby="customerTitle">
+      <div class="secure-checkout-label"><span>●</span> SESIÓN LOCAL PROTEGIDA · INTEGRIDAD SHA-256</div>
+      <form id="storeCheckoutForm" class="store-checkout-form">
+        <fieldset>
+          <legend><span>01</span><strong id="customerTitle">DATOS DE CONTACTO</strong></legend>
+          <div class="store-form-grid">
+            <label class="field-wide">NOMBRE COMPLETO<input id="buyerName" name="name" required minlength="3" maxlength="80" autocomplete="name" placeholder="Nombre y apellidos"></label>
+            <label>CORREO ELECTRÓNICO<input id="buyerEmail" name="email" type="email" required maxlength="120" autocomplete="email" placeholder="nombre@correo.com"></label>
+            <label>TELÉFONO<input id="buyerPhone" name="phone" type="tel" required minlength="10" maxlength="18" autocomplete="tel" inputmode="tel" placeholder="+52 81 0000 0000"></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span>02</span><strong>DATOS DE ENVÍO</strong></legend>
+          <div class="store-form-grid">
+            <label class="field-wide">CALLE Y NÚMERO<input name="street" required maxlength="120" autocomplete="street-address" placeholder="Calle, número exterior e interior"></label>
+            <label>COLONIA<input name="neighborhood" required maxlength="80" autocomplete="address-line2" placeholder="Colonia"></label>
+            <label>CIUDAD<input name="city" required maxlength="80" autocomplete="address-level2" placeholder="Ciudad"></label>
+            <label>ESTADO<input name="state" required maxlength="80" autocomplete="address-level1" placeholder="Estado"></label>
+            <label>CÓDIGO POSTAL<input name="postalCode" required pattern="[0-9]{5}" maxlength="5" inputmode="numeric" autocomplete="postal-code" placeholder="00000"></label>
+            <label class="field-wide">REFERENCIAS DE ENTREGA<input name="deliveryNotes" maxlength="160" autocomplete="off" placeholder="Opcional: entre calles, color de fachada, etc."></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span>03</span><strong>MÉTODO DE PAGO</strong></legend>
+          <div class="payment-logo-strip"><img src="assets/payment-methods-transparent.png" alt="Métodos aceptados: Visa, Mastercard, UnionPay, Apple Pay y Google Pay"></div>
+          <div class="store-payment-options">
+            <label><input type="radio" name="paymentMethod" value="Tarjeta bancaria" checked><span><strong>TARJETA BANCARIA</strong><small>Visa · Mastercard · UnionPay</small></span></label>
+            <label><input type="radio" name="paymentMethod" value="Apple Pay"><span><strong>APPLE PAY</strong><small>Confirmación en el proveedor</small></span></label>
+            <label><input type="radio" name="paymentMethod" value="Google Pay"><span><strong>GOOGLE PAY</strong><small>Confirmación en el proveedor</small></span></label>
+          </div>
+          <div class="payment-provider-note"><strong>PROTECCIÓN DE PAGO</strong><p>Este prototipo no captura datos de tarjeta. Para cobros reales, el botón debe conectarse a Stripe Checkout o Elements para que la información viaje directamente al proveedor tokenizado.</p></div>
+        </fieldset>
+
+        <label class="store-consent"><input type="checkbox" required><span>Acepto las <a href="condiciones-uso.html" target="_blank" rel="noopener">condiciones de uso</a> y el <a href="aviso-privacidad.html" target="_blank" rel="noopener">aviso de privacidad</a>.</span></label>
+        <p id="checkoutStatus" class="form-status" role="status" aria-live="polite"></p>
+        <button class="btn-primary store-pay-button" type="submit">PROCEDER CON EL PAGO SEGURO</button>
+      </form>
+    </section>
+  </div>
+
+  <section class="store-receipt-stage" id="receiptStage" hidden aria-labelledby="receiptTitle">
+    <div class="receipt-success-mark">✓</div>
+    <div class="section-label">COMPRA REGISTRADA</div>
+    <h2 id="receiptTitle">TICKET DE RECIBO</h2>
+    <p class="receipt-intro">Tu pedido fue confirmado en modo demostración. Conserva este ticket para seguimiento.</p>
+    <article class="store-receipt" id="storeReceipt">
+      <div class="receipt-watermark" aria-hidden="true"></div>
+      <header class="receipt-brand-row">
+        <div class="receipt-brand"><span>TRIP LINE MX</span><strong>FIELD GEAR</strong><small class="receipt-merchant">TRIP LINE MX, S.A. DE C.V.<br>Av. Expedición 2026, Monterrey, N.L. · +52 81 0000 2026</small></div>
+        <div class="receipt-reference-box"><p><b>FOLIO:</b> <span id="receiptReference"></span></p><p><b>FECHA:</b> <span id="receiptDate"></span></p></div>
+      </header>
+      <section class="receipt-customer-band">
+        <p><span>CLIENTE</span><strong id="receiptCustomer"></strong></p>
+        <p><span>MÉTODO DE PAGO</span><strong id="receiptMethod"></strong></p>
+        <p><span>ESTADO DEL PAGO</span><strong>PAGO DEMO<br>AUTORIZADO</strong></p>
+      </section>
+      <section class="receipt-order-section">
+        <h3>DETALLES DEL PEDIDO / DESGLOSE DE LA COMPRA</h3>
+        <div class="receipt-table-head"><span>DESCRIPCIÓN DEL PRODUCTO</span><span>CANTIDAD</span><span>SUBTOTAL</span></div>
+        <div id="receiptItems" class="receipt-items"></div>
+      </section>
+      <section class="receipt-delivery-summary">
+        <div class="receipt-address"><span>DATOS DE ENTREGA</span><strong id="receiptAddress"></strong></div>
+        <div class="receipt-summary">
+          <h3>RESUMEN DE PAGO</h3>
+          <p><span>Subtotal</span><strong id="receiptSubtotal"></strong></p>
+          <p><span>Envío</span><strong id="receiptShipping"></strong></p>
+          <div class="receipt-total"><span>TOTAL PAGADO</span><strong id="receiptTotal"></strong></div>
+        </div>
+      </section>
+      <footer><span>© 2026 TRIP LINE MX · RECIBO DIGITAL</span><i aria-hidden="true"></i></footer>
+    </article>
+    <div class="receipt-actions"><button class="btn-primary" id="downloadPdf" type="button">DESCARGAR PDF A4</button><button class="btn-ghost" id="downloadReceipt" type="button">DESCARGAR TICKET PDF</button><button class="btn-ghost" id="printReceipt" type="button">IMPRIMIR</button><a class="btn-ghost" href="tienda.html">VOLVER A LA TIENDA</a></div>
+  </section>
+</main>
+<script src="js/demo-auth.js"></script>
+<script src="js/vendor/pdf-lib.min.js"></script>
+<script src="js/checkout-tienda.js"></script>
+</body>
+</html>

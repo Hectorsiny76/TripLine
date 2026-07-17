@@ -15,5 +15,5 @@ function renderDashboard() {
  else livesTarget.innerHTML = lives.map((live) => `<div class="dashboard-row"><strong>${live.title}</strong><span>${live.destination}</span><em>${live.viewers || 1} VIEWERS</em></div>`).join('');
  ordersTarget.querySelectorAll('[data-cancel-order]').forEach((button) => button.addEventListener('click', () => { orders[Number(button.dataset.cancelOrder)].status = 'CANCELACIÓN SOLICITADA'; const all = getTriplineStore(TRIPLINE_ORDERS_KEY); const target = all.find((item) => item.reference === orders[Number(button.dataset.cancelOrder)].reference); if (target) target.status = 'CANCELACIÓN SOLICITADA'; setTriplineStore(TRIPLINE_ORDERS_KEY, all); renderDashboard(); }));
 }
-document.getElementById('dashboardLogout').addEventListener('click', () => { clearTriplineSession(); location.href = 'login.html?next=dashboard.html'; });
+document.getElementById('dashboardLogout')?.addEventListener('click', () => { clearTriplineSession(); location.href = 'login.html?next=dashboard.html'; });
 if (dashboardUser) { refreshAuthNavigation(); renderDashboard(); }

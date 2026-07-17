@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TRIP LINE — Escape the Normal</title>
+<link rel="icon" href="data:,">
 <meta name="description" content="Expediciones en México con rutas, reservas y transmisiones en vivo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,700&display=swap" rel="stylesheet">
@@ -21,14 +22,13 @@
 <nav aria-label="Navegación principal">
   <a href="index.html" class="nav-logo glitch">TRIP<span>LINE</span></a>
   <ul class="nav-links">
-    <li><a href="#streams">STREAMS</a></li>
-    <li><a href="#destinos">DESTINOS</a></li>
-    <li><a href="#paquetes">PAQUETES</a></li>
+    <li><a href="index.html#streams">STREAMS</a></li>
+    <li><a href="index.html#destinos">DESTINOS</a></li>
+    <li><a href="index.html#paquetes">PAQUETES</a></li>
     <li><a href="dashboard.html" data-dashboard-link>DASHBOARD</a></li>
     <li><a href="comunidad.html" data-community-link>COMUNIDAD</a></li>
     <li class="nav-more"><button class="nav-more-trigger" type="button" aria-haspopup="true">MÁS</button><div class="nav-more-menu"><a href="streams.html">ARCHIVO</a><a href="tienda.html">TIENDA</a><a href="ayuda.html">AYUDA</a><a href="admin.html">OPERACIONES</a></div></li>
   </ul>
-  <a class="nav-live-badge" href="#streams">LIVE NOW — <span data-live-count>1</span></a>
 </nav>
 
 <!-- HERO -->
@@ -88,16 +88,13 @@
           <div class="broadcast-grid" aria-hidden="true"></div><div class="broadcast-sweep" aria-hidden="true"></div>
           <div class="broadcast-topline"><span><i></i> TRIP LINE LIVE NETWORK</span><strong id="broadcast-clock">00:00:00</strong></div>
           <div class="signal-radar" aria-hidden="true"><span></span><span></span><span></span><b></b></div>
-          <div class="broadcast-core"><div class="broadcast-kicker">CANAL 01 // ENLACE RTMP</div><h3 id="connect-status">CONECTANDO CON LA EXPEDICIÓN</h3><p id="stream-endpoint">ESPERANDO SEÑAL DEL DISPOSITIVO</p><div class="signal-loader"><span></span></div><div class="connect-dots"><i></i><i></i><i></i></div></div>
-          <div class="broadcast-data-strip"><div><span>LATENCIA</span><strong id="signal-latency">42 MS</strong></div><div><span>BITRATE</span><strong id="signal-bitrate">6.8 MBPS</strong></div><div><span>VIDEO</span><strong>1080P / 60</strong></div><div><span>AUDIO</span><strong>STEREO</strong></div><div><span>GPS</span><strong>LOCKED</strong></div></div>
-          <div class="transmission-log"><span class="log-indicator"></span><strong id="transmission-log">INICIALIZANDO CANAL SEGURO...</strong></div>
         </div>
         <div id="stream-offline" class="stream-state" style="display:none"><div class="offline-label">TRANSMISIÓN FINALIZADA</div><div class="offline-title">VER GRABACIÓN</div><div id="vod-list" class="vod-list"></div><small>LAS GRABACIONES SE GUARDAN AUTOMÁTICAMENTE</small></div>
         <div id="unmute-overlay" class="unmute-overlay" onclick="unmuteStream()"><div>🔇</div><span>TOCA PARA ACTIVAR AUDIO</span></div>
         <div id="stream-controls" class="stream-controls"><button onclick="togglePlayPause()" id="play-btn" title="Play/Pause">⏸</button><input id="vol-slider" type="range" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)"><button onclick="toggleMute()" id="mute-btn" title="Silenciar">🔊</button><span id="vol-label">100%</span><button onclick="toggleFullscreen()" title="Pantalla completa">⛶</button></div>
       </div>
       <div class="stream-scanlines"></div><div class="stream-vignette"></div>
-      <div class="stream-hud-overlay"><div class="stream-hud-top"><div class="live-badge">LIVE</div><div class="viewers-badge"><span id="hud-viewers">2,841</span> VIEWERS</div></div><div class="stream-name-overlay">EXPEDICIÓN EN DIRECTO</div><div class="stream-hud-bottom"><div class="stream-hud-metrics"><div class="hud-metric"><span>ALTITUD</span><strong id="hud-alt">4,890</strong>M</div><div class="hud-metric"><span>HEART RATE</span><strong id="hud-hr">148</strong>BPM</div><div class="hud-metric" id="timer-main"><span>DURACIÓN</span>02:34:17</div></div><div class="signal-quality"><i></i><i></i><i></i><i></i><i></i></div></div></div>
+      <div class="stream-hud-overlay"><div class="stream-hud-top"><div class="live-badge">LIVE</div><div class="viewers-badge"><span id="hud-viewers">2,841</span> VIEWERS</div></div></div>
       <div class="hud-corner tl"></div><div class="hud-corner tr"></div><div class="hud-corner bl"></div><div class="hud-corner br"></div>
     </div>
     <div class="stream-side">
@@ -122,5 +119,45 @@
 
 <section id="paquetes"><div class="section-label reveal">NIVELES DE MISIÓN</div><h2 class="section-title reveal">ELIGE TU<br>EXPEDICIÓN</h2><div class="paquetes-grid"><div class="paquete-card reveal"><span class="paquete-badge badge-standard">STANDARD</span><h3 class="paquete-name">EXPLORER</h3><p class="paquete-duration">3–7 DÍAS DE EXPEDICIÓN</p><ul class="paquete-features"><li>Guía certificado</li><li>Campamento equipado</li><li>Seguro de emergencias</li><li>Acceso a rutas seleccionadas</li></ul><div class="paquete-price">DESDE $8,500 MXN<small>POR PERSONA</small></div><a href="reserva.html?package=standard" class="btn-ghost paquete-action">RESERVAR MISIÓN</a><div class="paquete-corner-deco"></div></div><div class="paquete-card extreme reveal"><div class="paquete-extreme-glow"></div><span class="paquete-badge badge-extreme">EXTREME</span><h3 class="paquete-name">EXTREME</h3><p class="paquete-duration">MISIÓN COMPLETA</p><ul class="paquete-features"><li>Todo lo incluido en Standard</li><li>Transmisión en vivo</li><li>Cinematic recap 4K</li><li>Acceso a retos especiales</li></ul><div class="paquete-price">DESDE $38,000 MXN<small>POR PERSONA</small></div><a href="reserva.html?package=extreme" class="btn-primary paquete-action">ACTIVAR MISIÓN EXTREME</a><div class="paquete-corner-deco"></div></div></div></section>
 
-<footer><div class="footer-inner reveal"><div><div class="footer-logo glitch">TRIP LINE</div><div class="footer-tagline">Escape the Normal — México 2026</div></div><div class="footer-links"><h4>EXPEDICIONES</h4><ul><li><a href="destinos.html?destino=espiritu-santo">Isla Espíritu Santo</a></li><li><a href="destinos.html?destino=selva-lacandona">Selva Lacandona</a></li><li><a href="destinos.html?destino=zona-silencio">Zona del Silencio</a></li><li><a href="destinos.html?destino=huasteca-potosina">Huasteca Potosina</a></li><li><a href="destinos.html?destino=pico-orizaba">Pico de Orizaba</a></li></ul></div><div class="footer-links"><h4>PLATAFORMA</h4><ul><li><a href="#streams">Live Streams</a></li><li><a href="streams.html">Archivo de expediciones</a></li><li><a href="dashboard.html" data-dashboard-link>Dashboard</a></li><li><a href="comunidad.html">Comunidad</a></li><li><a href="tienda.html">Merchandise</a></li><li><a href="ayuda.html">Ayuda y seguridad</a></li></ul></div><div class="footer-links"><h4>CONTACTO</h4><ul><li><a href="mailto:ops@extremeexp.mx">ops@extremeexp.mx</a></li><li><a href="tel:+528180000000">+52 818 000 0000</a></li><li><a href="ayuda.html#contacto">Monterrey, NL, México</a></li><li><a href="comunidad.html">@extreme.exp</a></li></ul></div></div><div class="footer-legal"><div class="footer-legal-row"><a href="condiciones-uso.html">Condiciones de uso</a><a href="aviso-privacidad.html">Aviso de privacidad</a></div><div class="footer-live-status"><span>STATUS:</span> <strong data-live-count>1</strong> DISPOSITIVOS CONECTADOS</div></div><div class="footer-bottom"><span>© 2026 TRIP LINE MX — TODOS LOS DERECHOS RESERVADOS</span><span class="footer-signal">SIGNAL STABLE // GPS ACTIVE // <strong data-live-count>1</strong> LIVE</span></div></footer>
+<footer>
+  <div class="footer-inner reveal">
+    <div class="footer-brand">
+      <div class="footer-logo glitch">TRIP LINE</div>
+      <div class="footer-tagline">Escape the Normal — México 2026</div>
+    </div>
+    <div class="footer-links">
+      <h4>EXPEDICIONES</h4>
+      <ul>
+        <li><a href="destinos.html?destino=espiritu-santo">Isla Espíritu Santo</a></li>
+        <li><a href="destinos.html?destino=selva-lacandona">Selva Lacandona</a></li>
+        <li><a href="destinos.html?destino=zona-silencio">Zona del Silencio</a></li>
+        <li><a href="destinos.html?destino=huasteca-potosina">Huasteca Potosina</a></li>
+        <li><a href="destinos.html?destino=pico-orizaba">Pico de Orizaba</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>PLATAFORMA</h4>
+      <ul>
+        <li><a href="#streams">Live Streams</a></li>
+        <li><a href="streams.html">Archivo de expediciones</a></li>
+        <li><a href="dashboard.html" data-dashboard-link>Dashboard</a></li>
+        <li><a href="comunidad.html">Comunidad</a></li>
+        <li><a href="tienda.html">Merchandise</a></li>
+        <li><a href="ayuda.html">Ayuda y seguridad</a></li>
+        <li><a href="condiciones-uso.html">Condiciones de uso</a></li>
+        <li><a href="aviso-privacidad.html">Aviso de privacidad</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>CONTACTO</h4>
+      <ul>
+        <li><a href="mailto:operaciones@tripline.mx">operaciones@tripline.mx</a></li>
+        <li><a href="tel:+528100002026">+52 81 0000 2026</a></li>
+        <li><a href="ayuda.html#contacto">Monterrey, NL, México</a></li>
+        <li><a href="comunidad.html">@tripline.mx</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 TRIP LINE MX — TODOS LOS DERECHOS RESERVADOS</div>
+</footer>
 <script src="js/stream-config.js"></script><script>if(location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'){document.write('<script src="js/stream-config.local.js"><\/script>')}</script><script src="js/demo-auth.js" defer></script><script src="js/live-presence.js" defer></script><script src="js/app.js" defer></script></body></html>

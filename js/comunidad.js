@@ -87,7 +87,7 @@ document.getElementById('publishDemoLive').addEventListener('click', () => {
   renderLives();
 });
 
-document.getElementById('logoutButton').addEventListener('click', () => {
+document.getElementById('logoutButton')?.addEventListener('click', () => {
   clearTriplineSession();
   window.location.href = 'login.html?next=comunidad.html';
 });

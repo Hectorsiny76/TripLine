@@ -11,8 +11,8 @@ window.TRIPLINE_DATA = {
     extreme: { name: 'Extreme', multiplier: 1.35, description: 'Todo Standard, producción audiovisual, live y soporte prioritario.' }
   },
   trust: {
-    emergencyPhone: '+52 818 000 0000',
-    email: 'ops@extremeexp.mx',
+    emergencyPhone: '+52 81 0000 2026',
+    email: 'operaciones@tripline.mx',
     insurance: 'Cobertura de asistencia y evacuación hasta $500,000 MXN.',
     cancellation: 'Reembolso del 100% hasta 30 días antes; 50% entre 15 y 29 días.'
   }
