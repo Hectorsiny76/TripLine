@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body class="booking-page">
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -30,7 +31,11 @@
         <label>FECHA<select name="date" id="bookingDate" required></select></label>
         <label>VIAJEROS<select name="travelers" id="bookingTravelers"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
       </div>
-      <fieldset><legend>PAQUETE</legend><label class="package-choice"><input type="radio" name="package" value="standard" checked><span><strong>STANDARD</strong><small id="standardDescription"></small></span></label><label class="package-choice"><input type="radio" name="package" value="extreme"><span><strong>EXTREME</strong><small id="extremeDescription"></small></span></label></fieldset>
+      <fieldset>
+        <legend>PAQUETE</legend>
+        <div id="packagesAvailable">
+        </div>
+      </fieldset>
       <div class="booking-summary" aria-live="polite"><span id="bookingRoute"></span><strong id="bookingTotal"></strong><small id="bookingCapacity"></small></div>
       <button class="btn-primary" type="submit">CONTINUAR AL CHECKOUT</button>
     </form>
