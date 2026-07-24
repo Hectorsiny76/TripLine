@@ -16,7 +16,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
   try{
 
-    const response = await axios.post('http://tripline-api.test/api/register', user);
+    const response = await axios.post('https://tripline-api.onrender.com/api/register', user);
 
     const token = response.data.token;
 

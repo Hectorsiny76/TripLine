@@ -10,8 +10,8 @@ trust = {
 async function getTriplineData() {
     try{
         const [destinationsResponse, packagesResponse] = await Promise.all([
-            axios.get("http://tripline-api.test/api/destinations"),
-            axios.get("http://tripline-api.test/api/packages"),
+            axios.get("https://tripline-api.onrender.com/api/destinations"),
+            axios.get("https://tripline-api.onrender.com/api/packages"),
         ])
 
         window.TRIPLINE_DATA = {
