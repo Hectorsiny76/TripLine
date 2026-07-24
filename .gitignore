@@ -1,2 +1,4 @@
 # Private local stream connection settings.
 js/stream-config.local.js
+.server-*.log
+tmp/
