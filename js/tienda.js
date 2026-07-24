@@ -33,7 +33,7 @@ function renderProducts() {
 }
 function saveCart() { setTriplineStore('tripline_demo_cart', cart); }
 function renderCart() {
-  const count = cart.reduce((sum, item) => sum + item.qty, 0); document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
   document.getElementById('cartItems').innerHTML = cart.length ? cart.map((item) => { const product = productFor(item.productId); const variant = variantFor(product, item.variantId); return `<article class="cart-product" data-key="${item.key}"><img src="${variant.image}" alt=""><div><span>${product.category}</span><h3>${product.name}</h3><small>${variant.label} · ${item.size}</small><div class="quantity-control"><button type="button" data-qty="-1" aria-label="Quitar uno">−</button><strong>${item.qty}</strong><button type="button" data-qty="1" aria-label="Agregar uno">+</button><button type="button" class="remove-item" data-remove>ELIMINAR</button></div></div><strong>${money(product.price * item.qty)}</strong></article>`; }).join('') : '<div class="cart-empty"><span>🛒</span><h3>TU CARRITO ESTÁ VACÍO</h3><p>Agrega equipo para preparar tu próxima ruta.</p></div>';
   const subtotal = cart.reduce((sum, item) => sum + productFor(item.productId).price * item.qty, 0); const shipping = subtotal === 0 || subtotal >= 2500 ? 0 : 199;
   document.getElementById('cartSubtotal').textContent = money(subtotal); document.getElementById('cartShipping').textContent = shipping ? money(shipping) : 'GRATIS'; document.getElementById('cartTotal').textContent = money(subtotal + shipping); document.getElementById('demoOrder').disabled = !cart.length; saveCart();

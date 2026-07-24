@@ -61,7 +61,7 @@ window.addEventListener("triplineDataLoaded", function() {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = new FormData(form);
-    const query = new URLSearchParams({ destino: data.get('destination'), date: data.get('date'), travelers: data.get('travelers'), package: data.get('package') });
+    const query = new URLSearchParams({ destination: data.get('destination'), date: data.get('date'), travelers: data.get('travelers'), package: data.get('package') });
     location.href = `checkout.html?${query}`;
   });
   refreshBooking();
