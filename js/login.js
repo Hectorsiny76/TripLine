@@ -1,5 +1,8 @@
 const nextPage = new URLSearchParams(window.location.search).get('next') || 'dashboard.html';
 
+const token = getTriplineStore(AUTH_TOKEN_KEY);
+console.log(token);
+
 function finishDemoLogin(user) {
   const users = getTriplineStore(TRIPLINE_USERS_KEY);
   if (!users.some((saved) => saved.email === user.email)) {
@@ -38,7 +41,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
   try{
 
-    const response = await axios.post('https://tripline-api.onrender.com/api/login', credentials);
+    const response = await TL_API.post('/login',credentials);
 
     const token = response.data.token;
 

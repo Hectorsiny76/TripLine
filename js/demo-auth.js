@@ -2,6 +2,34 @@ const TRIPLINE_SESSION_KEY = 'tripline_demo_session';
 const TRIPLINE_USERS_KEY = 'tripline_demo_users';
 const TRIPLINE_LIVES_KEY = 'tripline_demo_lives';
 const TRIPLINE_ORDERS_KEY = 'tripline_demo_orders';
+const AUTH_TOKEN_KEY = 'auth_token';
+
+const TL_API = axios.create({
+  baseURL: 'http://tripline-api.test/api',
+  headers: {
+    'Accept': 'application/json',
+  }
+});
+
+TL_API.interceptors.request.use(config => {
+  const token = getAuthToken();
+  if(token){
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, function (error) {
+  return Promise.reject(error);
+    }
+);
+
+function getAuthToken() {
+  try {
+    return localStorage.getItem(AUTH_TOKEN_KEY);
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
 
 function getTriplineSession() {
   try {
@@ -15,8 +43,20 @@ function setTriplineSession(user) {
   localStorage.setItem(TRIPLINE_SESSION_KEY, JSON.stringify(user));
 }
 
-function clearTriplineSession() {
-  localStorage.removeItem(TRIPLINE_SESSION_KEY);
+async function clearTriplineSession() {
+  try{
+    const response = await TL_API.post("/logout");
+
+    console.log("Éxito!", response.data);
+
+    localStorage.removeItem(TRIPLINE_SESSION_KEY);
+    localStorage.removeItem(AUTH_TOKEN_KEY);
+
+    location.href = 'login.html?next=dashboard.html';
+
+  } catch (e) {
+    console.log("Error de logout", e);
+  }
 }
 
 function getTriplineStore(key) {
